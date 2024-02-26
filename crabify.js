@@ -35,6 +35,7 @@ function crabify_text() {
       }
     }
 }
+function crabify() {
   const images = document.querySelectorAll("img").forEach(img => {
     img.src = get_random(crab_images)
   })
@@ -43,6 +44,17 @@ function crabify_text() {
     container.appendChild(crab_rave)
     vid.replaceWith(container)
   })
-let rave = new Audio('files/crab_rave.opus')
-  rave.play()
-//setInterval(crabify_text(), 1000)
+  crabify_text()
+  console.log('CRABIFYING')
+}
+
+let rave = new Audio('https://github.com/hobg0blin/crabify/raw/main/files/crab_rave.opus')
+let playing = false
+document.body.addEventListener("click", () => {
+  if (!playing) {
+    rave.play()
+    playing = true
+  }
+    crabify()
+})
+crabify()
